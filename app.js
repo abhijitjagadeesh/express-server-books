@@ -1,11 +1,16 @@
 import createError from "http-errors";
+import logger from "morgan";
 import express from "express";
 import path from "path";
 import cookieParser from "cookie-parser";
-import logger from "morgan";
+import Sql3 from "./custom-modules/sqlite3";
 
 import indexRouter from "./routes/index";
 import booksRouter from "./routes/books";
+
+// ste up db
+const db = new Sql3();
+db.createDb();
 
 var app = express();
 
